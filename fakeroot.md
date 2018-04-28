@@ -1,6 +1,6 @@
 # Building fakeroot-tcp on Arch WSL
-Instructions from user `some_random_guy_5345` on Reddit
-[Full thread here](https://www.reddit.com/r/archlinux/comments/7rycmu/cannot_build_fakeroottcp_without_fakeroot/)
+Instructions from user `some_random_guy_5345` on Reddit.
+[Full thread here](https://www.reddit.com/r/archlinux/comments/7rycmu/cannot_build_fakeroottcp_without_fakeroot/).
 
 #### Instructions
 Open up the PKGBUILD for `fakeroot-tcp`
