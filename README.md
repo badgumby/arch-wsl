@@ -54,7 +54,7 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
 14. Enter bash
 
-      `bash`
+      `bash ~`
 
 15. Initialize Arch keyring
 
@@ -86,7 +86,7 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
 20. Set `root` user password
 
-      `password`
+      `passwd`
 
 21. Create new user
 
@@ -96,13 +96,9 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
       `passwd username`
 
-23. Configure wheel group
+23. Enable `wheel` group
 
-      `vim /etc/sudoers`
-
-      (uncomment the following line)
-
-      `%wheel ALL=(ALL) ALL`
+       `sed -i '/%wheel ALL=(ALL) ALL/c\%wheel ALL=(ALL) ALL'  /etc/sudoers`
 
 24. Edit Arch locale and regenerate
 
@@ -126,4 +122,6 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
 28. On next enter, you should login as your newly created user
 
-      `bash`
+      `bash ~`
+
+29. Replace `bash.ico` in `%LOCALAPPDATA%\lxss\` with preferred Arch icon
