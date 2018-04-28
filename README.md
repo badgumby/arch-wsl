@@ -120,14 +120,14 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
       `echo LC_ALL=en_US.UTF-8 >> /etc/locale.conf`
 
-25. Exit bash
+26. Exit bash
 
       `exit`
 
-26. In Command Prompt, set default user for linux subsystem
+27. In Command Prompt, set default user for linux subsystem
 
       `lxrun /setdefaultuser username`
 
-27. On next enter, you should login as your newly created user
+28. On next enter, you should login as your newly created user
 
       `bash`
