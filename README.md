@@ -33,7 +33,6 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 9. Update name servers (swap IP's for preferred DNS)
 
    `echo "nameserver 8.8.8.8" ~/root.x86_64/etc/resolv.conf`
-
    `echo "nameserver 8.8.4.4" ~/root.x86_64/etc/resolv.conf`
 
 10. Exit bash
@@ -63,7 +62,6 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 16. Initialize Arch keyring
 
    `pacman-key --init`
-
    `pacman-key --populate archlinux`
 
 17. Install base
@@ -73,11 +71,8 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 18. Enable multilib (if you want)
 
    `linenumber=$(grep -nr "\\#\\[multilib\\]" /etc/pacman.conf | gawk '{print $1}' FS=":")`
-
    `sed -i "${linenumber}s:.*:[multilib]:" /etc/pacman.conf`
-
    `linenumber=$((linenumber+1))`
-
    `sed -i "${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:" /etc/pacman.conf`
 
 19. Sync package databases
@@ -90,7 +85,7 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
 21. Set `root` user password
 
-   password
+   `password`
 
 22. Create new user
 
