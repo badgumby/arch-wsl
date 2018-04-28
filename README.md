@@ -64,7 +64,7 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
 16. Install base
 
-      `pacman -Syyu base base-devel vim wget reflector`
+      `pacman -Syyu base base-devel git vim wget reflector`
 
 17. Enable multilib (if you want)
 
@@ -124,4 +124,4 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
       `bash ~`
 
-29. Replace `bash.ico` in `%LOCALAPPDATA%\lxss\` with preferred Arch icon
+29. Replace `bash.ico` in `%LOCALAPPDATA%\lxss\` with preferred Arch icon. Be sure to name `bash.ico`
