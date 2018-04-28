@@ -22,11 +22,11 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
    `wget https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.04.01-x86_64.tar.gz`
 
-7. Extract image
+7. Extract the image
 
    `tar -zxvf archlinux-bootstrap-2018.04.01-x86_64.tar.gz`
 
-8. Uncomment pacman mirrorlist
+8. Uncomment some servers in the pacman mirrorlist
 
    `vim ~/root.x86_64/etc/pacman.d/mirrorlist`
 
@@ -36,7 +36,7 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
    `echo "nameserver 8.8.4.4" ~/root.x86_64/etc/resolv.conf`
 
-10. Exit bash
+10.  Exit bash
 
    `exit`
 
@@ -63,7 +63,7 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 16. Initialize Arch keyring
 
    `pacman-key --init`
-   
+
    `pacman-key --populate archlinux`
 
 17. Install base
