@@ -36,86 +36,86 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
    `echo "nameserver 8.8.4.4" ~/root.x86_64/etc/resolv.conf`
 
-10.  Exit bash
+10. Exit bash
 
-   `exit`
+      `exit`
 
 11. Go here
 
-   `%LOCALAPPDATA%\lxss\rootfs`
+      `%LOCALAPPDATA%\lxss\rootfs`
 
 12. Delete these directories
 
-   `bin` `etc` `lib` `lib64` `sbin` `usr` `var`
+      `bin` `etc` `lib` `lib64` `sbin` `usr` `var`
 
 13. Now, go here
 
-   `%LOCALAPPDATA%\lxss\root\root.x86_64`
+      `%LOCALAPPDATA%\lxss\root\root.x86_64`
 
 14. Move (cut), dont copy these folders/files
 
-   `bin` `etc` `lib` `lib64` `sbin` `usr` `var`
+      `bin` `etc` `lib` `lib64` `sbin` `usr` `var`
 
 15. Enter bash
 
-   `bash`
+      `bash`
 
 16. Initialize Arch keyring
 
-   `pacman-key --init`
+      `pacman-key --init`
 
-   `pacman-key --populate archlinux`
+      `pacman-key --populate archlinux`
 
 17. Install base
 
-   `pacman -Syyu base base-devel vim wget reflector`
+      `pacman -Syyu base base-devel vim wget reflector`
 
 18. Enable multilib (if you want)
 
-   `linenumber=$(grep -nr "\\#\\[multilib\\]" /etc/pacman.conf | gawk '{print $1}' FS=":")`
+      `linenumber=$(grep -nr "\\#\\[multilib\\]" /etc/pacman.conf | gawk '{print $1}' FS=":")`
 
-   `sed -i "${linenumber}s:.*:[multilib]:" /etc/pacman.conf`
+      `sed -i "${linenumber}s:.*:[multilib]:" /etc/pacman.conf`
 
-   `linenumber=$((linenumber+1))`
+      `linenumber=$((linenumber+1))`
 
-   `sed -i "${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:" /etc/pacman.conf`
+      `sed -i "${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:" /etc/pacman.conf`
 
 19. Sync package databases
 
-   `pacman -Syy`
+      `pacman -Syy`
 
 20. Update mirror list (replace United States with preferred repo mirror country)
 
-   `reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist`
+      `reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist`
 
 21. Set `root` user password
 
-   `password`
+      `password`
 
 22. Create new user
 
-   `useradd -m -G wheel username`
+      `useradd -m -G wheel username`
 
 23. Set password on user
 
-   `passwd username`
+      `passwd username`
 
 24. Configure wheel group
 
-   `vim /etc/sudoers`
+      `vim /etc/sudoers`
 
-   (uncomment the following line)
+      (uncomment the following line)
 
-   `%wheel ALL=(ALL) ALL`
+      `%wheel ALL=(ALL) ALL`
 
 25. Exit bash
 
-   `exit`
+      `exit`
 
 26. In Command Prompt, set default user for linux subsystem
 
-   `lxrun /setdefaultuser username`
+      `lxrun /setdefaultuser username`
 
 27. On next enter, you should login as your newly created user
 
-   `bash`
+      `bash`
