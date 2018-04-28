@@ -32,45 +32,41 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
 9. Update name servers (swap IP's for preferred DNS)
 
-   `echo "nameserver 8.8.8.8" ~/root.x86_64/etc/resolv.conf`
+   `echo "nameserver 8.8.8.8" >> ~/root.x86_64/etc/resolv.conf`
 
-   `echo "nameserver 8.8.4.4" ~/root.x86_64/etc/resolv.conf`
+   `echo "nameserver 8.8.4.4" >> ~/root.x86_64/etc/resolv.conf`
 
 10. Exit bash
 
       `exit`
 
-11. Go here
+11. Go to `lxss` directory and rename `rootfs` directory
 
-      `%LOCALAPPDATA%\lxss\rootfs`
+      `%LOCALAPPDATA%\lxss\` and rename directory `rootfs` to `rootfs_old`
 
-12. Delete these directories
+12. Now, go here and and rename extracted Arch `root.x86_64`
 
-      `bin` `etc` `lib` `lib64` `sbin` `usr` `var`
+      `%LOCALAPPDATA%\lxss\root\` and rename directory `root.x86_64` to `rootfs`
 
-13. Now, go here
+13. Move (cut), do not copy directory (if you copy, it will break symlinks)
 
-      `%LOCALAPPDATA%\lxss\root\root.x86_64`
+      `%LOCALAPPDATA%\lxss\root\rootfs` to `%LOCALAPPDATA%\lxss\rootfs`
 
-14. Move (cut), dont copy these folders/files
-
-      `bin` `etc` `lib` `lib64` `sbin` `usr` `var`
-
-15. Enter bash
+14. Enter bash
 
       `bash`
 
-16. Initialize Arch keyring
+15. Initialize Arch keyring
 
       `pacman-key --init`
 
       `pacman-key --populate archlinux`
 
-17. Install base
+16. Install base
 
       `pacman -Syyu base base-devel vim wget reflector`
 
-18. Enable multilib (if you want)
+17. Enable multilib (if you want)
 
       `linenumber=$(grep -nr "\\#\\[multilib\\]" /etc/pacman.conf | gawk '{print $1}' FS=":")`
 
@@ -80,27 +76,27 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
       `sed -i "${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:" /etc/pacman.conf`
 
-19. Sync package databases
+18. Sync package databases
 
       `pacman -Syy`
 
-20. Update mirror list (replace United States with preferred repo mirror country)
+19. Update mirror list (replace United States with preferred repo mirror country)
 
       `reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist`
 
-21. Set `root` user password
+20. Set `root` user password
 
       `password`
 
-22. Create new user
+21. Create new user
 
       `useradd -m -G wheel username`
 
-23. Set password on user
+22. Set password on user
 
       `passwd username`
 
-24. Configure wheel group
+23. Configure wheel group
 
       `vim /etc/sudoers`
 
@@ -108,7 +104,7 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
       `%wheel ALL=(ALL) ALL`
 
-25. Edit Arch locale and regenerate
+24. Edit Arch locale and regenerate
 
       `sed -i 's:#en_US.UTF-8 UTF-8:en_US.UTF-8 UTF-8:g' /etc/locale.gen`
 
@@ -120,11 +116,11 @@ These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
 
       `echo LC_ALL=en_US.UTF-8 >> /etc/locale.conf`
 
-26. Exit bash
+25. Exit bash
 
       `exit`
 
-27. In Command Prompt, set default user for linux subsystem
+26. In Command Prompt, set default user for linux subsystem
 
       `lxrun /setdefaultuser username`
 
