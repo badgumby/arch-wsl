@@ -1,5 +1,8 @@
 # Arch on WSL
-These are the basic instructions to build Arch on top of the Legacy Ubuntu WSL.
+###### These are the basic instructions to build Arch on WSL.
+These instructions will not allow you install an AUR helper. makepkg will not build packages on Arch WSL without a custom compiled fakeroot.
+The kernel in WSL does not support sysv, so you would need to build a copy of `fakeroot-tcp` from source, then install it.
+Basic instructions are included in the file `fakeroot.md`.
 
 1. Install the `Windows Subsystem for Linux`.
 
