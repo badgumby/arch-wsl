@@ -1,5 +1,5 @@
 # Building fakeroot-tcp on Arch WSL
-Instructions from user `some_random_guy_5345` on Reddit.
+Modified original instructions from user `some_random_guy_5345` on Reddit.
 [Full thread here](https://www.reddit.com/r/archlinux/comments/7rycmu/cannot_build_fakeroottcp_without_fakeroot/).
 
 #### Instructions
@@ -27,7 +27,7 @@ Instructions from user `some_random_guy_5345` on Reddit.
    exit
 
 ```
-   Note: If you receive any errors after running `/opt/fakeroot/bin/fakeroot`, ignore them.
+   Note: If you receive any errors like (acl_get_fd, acl_get_file, etc) after running `/opt/fakeroot/bin/fakeroot`, ignore them. These are a bug in `glibc` with this build of `fakeroot`.
 
 4. Backup base `faked` and `fakeroot` from `/sbin` and `/bin` and replace with newly built files
 
