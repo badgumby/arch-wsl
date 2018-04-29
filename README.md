@@ -186,3 +186,24 @@ Basic instructions are included in the file `fakeroot.md`.
 
 7. Download and install fonts for Powerline. [Download here.](https://github.com/powerline/fonts/)
 8. Right-click the title bar, select `Options`, then select your installed font from the `Text` section.
+
+***
+
+### Launch X11 apps from the shell to Windows display
+
+1. Download and install [Xming](http://www.straightrunning.com/XmingNotes/), and X11 display server for Windows.
+2. Install an xorg app for testing (We will use the Xorg Calculator).
+
+   `sudo pacman -S xorg-xcalc`
+
+3. Export output to display.
+
+   `export DiSPLAY=:0`
+
+   Note: If you add this line to your `.bashrc` or `.zshrc` you won't need to type it again on the next WSL launch.
+
+4. Launch `xcalc` to test.
+
+   `xcalc`
+
+5. If Xming is working properly, Xorg Calculator should popup as a new window.
