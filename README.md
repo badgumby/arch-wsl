@@ -173,7 +173,7 @@ Basic instructions are included in the file `fakeroot.md`.
 
    `sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"`
 
-   Note: This will install `oh-my-zsh` and set `zsh` to be the logged in users default shell, but since WSL launches bash, you will need to `exec zsh` after login each time.
+   Note: This will install `oh-my-zsh` and set `zsh` to be the logged in users default shell, but since WSL launches bash, you will need to add the line `bash -c zsh` to your `~/.bashrc` file.
 
 6. Configure your `zsh` theme.
 
@@ -181,5 +181,5 @@ Basic instructions are included in the file `fakeroot.md`.
 
    `ZSH_THEME="agnoster"` (This is my preferred theme)
 
-7. Install fonts for Powerline. [Download here.](https://github.com/powerline/fonts/tree/master/DejaVuSansMono)
+7. Download and install fonts for Powerline. [Download here.](https://github.com/powerline/fonts/)
 8. Right-click the title bar, select `Options`, then select your installed font from the `Text` section.
