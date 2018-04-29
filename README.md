@@ -152,3 +152,34 @@ Basic instructions are included in the file `fakeroot.md`.
 4. Run `makepkg` to build and install aura.
 
    `makepkg -si`
+
+***
+
+### Install wsl-terminal and z shell
+
+1. Download [wsl-terminal](https://github.com/goreliu/wsl-terminal/releases).
+2. Extract folder and launch `wsl-terminal`.
+3. Enter home directory.
+
+   `cd ~`
+
+3. Right-click the title bar, select `Options` then select your theme from the `Looks` section.
+
+4. Install `zsh`.
+
+   `sudo pacman -S zsh`
+
+5. Install `oh-my-zsh`.
+
+   `sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"`
+
+   Note: This will install `oh-my-zsh` and set `zsh` to be the logged in users default shell, but since WSL launches bash, you will need to `exec zsh` after login each time.
+
+6. Configure your `zsh` theme.
+
+   `vim ~/.zshrc`
+
+   `ZSH_THEME="agnoster"` (This is my preferred theme)
+
+7. Install fonts for Powerline. [Download here.](https://github.com/powerline/fonts/tree/master/DejaVuSansMono)
+8. Right-click the title bar, select `Options`, then select your installed font from the `Text` section.
