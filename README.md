@@ -138,7 +138,7 @@ Basic instructions are included in the file `fakeroot.md`.
 
 ### Install Aura AUR helper
 
-1. You will first need to rebuild `fakeroot` following the instructions [here](../blob/master/fakeroot.md)
+1. You will first need to rebuild `fakeroot` following the instructions [here](../master/fakeroot.md)
 
 2. Create a directory for the aura PKGBUILD files and enter it.
 
