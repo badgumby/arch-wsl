@@ -27,7 +27,7 @@ Modified original instructions from user `some_random_guy_5345` on Reddit.
    exit
 
 ```
-   Note: If you receive any errors like (acl_get_fd, acl_get_file, etc) after running `/opt/fakeroot/bin/fakeroot`, ignore them. These are a bug in `glibc` with this build of `fakeroot`.
+   Note: If you receive any errors (like acl_get_fd, acl_get_file, etc) after running `/opt/fakeroot/bin/fakeroot`, ignore them. These are a bug in this build of `fakeroot` caused by mismatch in `glibc`.
 
 4. Backup base `faked` and `fakeroot` from `/sbin` and `/bin` and replace with newly built files
 
