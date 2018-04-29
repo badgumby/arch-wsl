@@ -4,6 +4,10 @@ These instructions will not allow you to install from `PKGBUILD` files. `makepkg
 The kernel in WSL does not support sysv, so you would need to build a copy of `fakeroot-tcp` from source, then install it.
 Basic instructions are included in the file `fakeroot.md`.
 
+***
+
+### Installing Arch WSL from bootstrap
+
 1. Install the `Windows Subsystem for Linux`.
 
 2. Open Windows Command Prompt.
@@ -132,7 +136,7 @@ Basic instructions are included in the file `fakeroot.md`.
 
 ***
 
-#### Install Aura AUR helper
+### Install Aura AUR helper
 
 1. You will first need to rebuild `fakeroot` following the instructions [here](../blob/master/fakeroot.md)
 
