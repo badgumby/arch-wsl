@@ -198,7 +198,7 @@ Basic instructions are included in the file `fakeroot.md`.
 
 3. Export output to display.
 
-   `export DiSPLAY=:0`
+   `export DISPLAY=:0`
 
    Note: If you add this line to your `.bashrc` or `.zshrc` you won't need to type it again on the next WSL launch.
 
