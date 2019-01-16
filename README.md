@@ -139,20 +139,20 @@ Basic instructions are included in the file `fakeroot.md`.
 
 ***
 
-### Install Aura AUR helper
+### Install Yay AUR wrapper (https://github.com/Jguer/yay)
 
 1. You will first need to rebuild `fakeroot` following the instructions [here](../master/fakeroot.md)
 
-2. Create a directory for the aura PKGBUILD files and enter it.
+2. Create a directory for the yay PKGBUILD files and enter it.
 
-   `mkdir ~/aura-bin`
-   `cd ~/aura-bin`
+   `mkdir ~/yay`
+   `cd ~/yay`
 
 3. Download aura PKGBUILD from AUR.  
 
-   `wget --no-check-certificate https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD\?h\=aura-bin --output-document=./PKGBUILD`
+   `wget --no-check-certificate https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay --output-document=./PKGBUILD`
 
-4. Run `makepkg` to build and install aura.
+4. Run `makepkg` to build and install yay.
 
    `makepkg -si`
 
