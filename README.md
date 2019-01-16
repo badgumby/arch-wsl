@@ -139,7 +139,7 @@ Basic instructions are included in the file `fakeroot.md`.
 
 ***
 
-### Install Yay AUR wrapper (https://github.com/Jguer/yay)
+### Install Yay AUR Helper and Pacman Wrapper (https://github.com/Jguer/yay)
 
 1. You will first need to rebuild `fakeroot` following the instructions [here](../master/fakeroot.md)
 
