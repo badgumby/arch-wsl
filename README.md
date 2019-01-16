@@ -148,7 +148,7 @@ Basic instructions are included in the file `fakeroot.md`.
    `mkdir ~/yay`
    `cd ~/yay`
 
-3. Download aura PKGBUILD from AUR.  
+3. Download yay PKGBUILD from AUR.  
 
    `wget --no-check-certificate https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay --output-document=./PKGBUILD`
 
