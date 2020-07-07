@@ -10,9 +10,9 @@ For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 * `Steps 2-8 should be completed on a linux system`
 
-2. Install your favorite available distro from the `Windows Store`.
+2. Install your favorite available distro from the `Windows Store`, then launch it from the `Start` menu.
 
-3. Get the Arch Linux bootstrap (latest version at time of writing).
+3. Download the Arch Linux bootstrap (latest version at time of writing).
 
       `wget https://mirrors.edge.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2020.07.01-x86_64.tar.gz`
 
