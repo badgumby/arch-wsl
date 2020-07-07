@@ -1,191 +1,119 @@
-# Arch on WSL
-#### These are the basic instructions to build Arch on WSL.
-These instructions will not allow you to install from `PKGBUILD` files. `makepkg` will not build packages on Arch WSL without a custom compiled `fakeroot`.
-The kernel in WSL does not support sysv, so you would need to build a copy of `fakeroot-tcp` from source, then install it.
-Basic instructions are included in the file `fakeroot.md`.
+# Arch on WSL 2
+#### These are the basic instructions to build Arch on WSL 2.
+For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 ***
 
-### Installing Arch WSL from bootstrap
+### Installing Archlinux for WSL 2 from bootstrap
 
-1. Install the `Windows Subsystem for Linux`. Open PowerShell and enter:
+1. Setup, upgrade to the `Windows Subsystem for Linux 2`. [Go here.](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
 
-   `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
+2. Install another distro from the `Windows Store`.
 
-2. Reboot, when prompted.
-3. Open Windows Command Prompt.
+      `You could also do these next few steps on a separate linux machine`
 
-   `cmd`
+3. Get the Arch Linux bootstrap (latest version at time of writing).
 
-4. Uninstall any existing installs.
+      `wget https://mirrors.edge.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2020.07.01-x86_64.tar.gz`
 
-   `lxrun /uninstall /full /y`
+4. Extract the image.
 
-5. Install Ubuntu base.
+      `sudo tar -zxvf archlinux-bootstrap-2020.07.01-x86_64.tar.gz`
 
-   `lxrun /install /y`
+5. Enter the extraced directory `root.x86_64`
 
-6. Enter root bash.
+      `cd root.x86_64`
 
-   `bash ~`
+6. Uncomment some servers in the pacman mirrorlist.
 
-7. Get the Arch Linux bootstrap (latest version at time of writing).
+      `vim etc/pacman.d/mirrorlist`
 
-   `wget https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-2018.04.01-x86_64.tar.gz`
+7. Recompress files in `root.x86_64` directory.
 
-8. Extract the image.
+      `sudo tar -czvf root.tar.gz *`
 
-   `tar -zxvf archlinux-bootstrap-2018.04.01-x86_64.tar.gz`
+8. Move the `root.tar.gz` file to an accessible Windows directory.
 
-9. Uncomment some servers in the pacman mirrorlist.
+      `sudo mv root.tar.gz /mnt/c/Users/USERNAME/root.tar.gz`
 
-   `vim ~/root.x86_64/etc/pacman.d/mirrorlist`
+9. Open a PowerShell prompt as Admin, and issue the following command:
 
-10. Update name servers (swap IP's for preferred DNS).
+      `wsl --import Archlinux PATH_WHERE_VHD_SHOULD_BE_CREATED C:\Users\USERNAME\root.tar.gz`
 
-   `echo "nameserver 8.8.8.8" >> ~/root.x86_64/etc/resolv.conf`
+10. Launch Archlinux from WSL.
 
-   `echo "nameserver 8.8.4.4" >> ~/root.x86_64/etc/resolv.conf`
+      `wsl -d Archlinux`
 
-11. Exit bash.
-
-      `exit`
-
-12. Go to `lxss` directory and rename `rootfs` directory.
-
-      `%LOCALAPPDATA%\lxss\` and rename directory `rootfs` to `rootfs_old`
-
-13. Now, go here and and rename extracted Arch `root.x86_64`.
-
-      `%LOCALAPPDATA%\lxss\root\` and rename directory `root.x86_64` to `rootfs`
-
-14. Move (cut), do not copy directory (if you copy, it will break symlinks).
-
-      `%LOCALAPPDATA%\lxss\root\rootfs` to `%LOCALAPPDATA%\lxss\rootfs`
-
-15. Enter bash.
-
-      `bash ~`
-
-16. Initialize Arch keyring.
+11. Initialize Arch keyring.
 
       `pacman-key --init`
-
       `pacman-key --populate archlinux`
 
-17. Install base.
+12. Install base.
 
-      `pacman -Syyu base base-devel git vim wget reflector`
+      `pacman -Syyu base base-devel git vim wget reflector fish`
 
-18. Enable `multilib` (if you want).
+13. Enable `multilib` (if you want).
 
       `linenumber=$(grep -nr "\\#\\[multilib\\]" /etc/pacman.conf | gawk '{print $1}' FS=":")`
-
       `sed -i "${linenumber}s:.*:[multilib]:" /etc/pacman.conf`
-
       `linenumber=$((linenumber+1))`
-
       `sed -i "${linenumber}s:.*:Include = /etc/pacman.d/mirrorlist:" /etc/pacman.conf`
 
-19. Sync package databases.
+14. Sync package databases.
 
       `pacman -Syy`
 
-20. Update mirror list (replace United States with preferred repo mirror country).
+15. Update mirror list (replace United States with preferred repo mirror country).
 
-      `reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist`
+     `reflector --country "United States" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist`
 
-21. Set `root` user password.
+16. Set `root` user password.
 
       `passwd`
 
-22. Create new user.
+17. Create new user.
 
-      `useradd -m -G wheel username`
+      `useradd -m -G wheel -s /bin/fish -d /home/username username`
 
-23. Set password on user.
+18. Set password on user.
 
       `passwd username`
 
-24. Enable `wheel` group.
+19. Enable `wheel` group.
 
-       `sed -i '/%wheel ALL=(ALL) ALL/c\%wheel ALL=(ALL) ALL'  /etc/sudoers`
+      `sed -i '/%wheel ALL=(ALL) ALL/c\%wheel ALL=(ALL) ALL'  /etc/sudoers`
 
-25. Edit Arch locale and regenerate.
+20. Edit Arch locale and regenerate.
 
       `sed -i 's:#en_US.UTF-8 UTF-8:en_US.UTF-8 UTF-8:g' /etc/locale.gen`
-
       `locale-gen`
-
       `echo LANG=en_US.UTF-8 >> /etc/locale.conf`
-
       `echo LANGUAGE=en_US.UTF-8 >> /etc/locale.conf`
-
       `echo LC_ALL=en_US.UTF-8 >> /etc/locale.conf`
-
-26. Exit bash.
-
-      `exit`
-
-27. In Command Prompt, set default user for linux subsystem.
-
-      `lxrun /setdefaultuser username`
-
-28. On next enter, you should login as your newly created user.
-
-      `bash ~`
-
-29. Replace `bash.ico` in `%LOCALAPPDATA%\lxss\` with preferred Arch icon. Be sure to name `bash.ico`.
 
 ***
 
 ### Install Yay AUR Helper and Pacman Wrapper (https://github.com/Jguer/yay)
 
-1. You will first need to rebuild `fakeroot` following the instructions [here](../master/fakeroot.md)
-
-2. Create a directory for the yay PKGBUILD files and enter it.
+1. Create a directory for the yay PKGBUILD files and enter it.
 
    `mkdir ~/yay`
    `cd ~/yay`
 
-3. Download yay PKGBUILD from AUR.  
+2. Download yay PKGBUILD from AUR.  
 
    `wget --no-check-certificate https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay --output-document=./PKGBUILD`
 
-4. Run `makepkg` to build and install yay.
+3. Run `makepkg` to build and install yay.
 
    `makepkg -si`
 
 ***
 
-### Install wsl-terminal and z shell
+### Powerline Fonts
 
-1. Download [wsl-terminal](https://github.com/goreliu/wsl-terminal/releases).
-2. Extract folder and launch `wsl-terminal`.
-3. Enter home directory.
-
-   `cd ~`
-
-3. Right-click the title bar, select `Options` then select your theme from the `Looks` section.
-
-4. Install `zsh`.
-
-   `sudo pacman -S zsh`
-
-5. Install `oh-my-zsh`.
-
-   `sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"`
-
-   Note: This will install `oh-my-zsh` and set `zsh` to be the logged in users default shell, but since WSL launches bash, you will need to add the line `bash -c zsh` to your `~/.bashrc` file.
-
-6. Configure your `zsh` theme.
-
-   `vim ~/.zshrc`
-
-   `ZSH_THEME="agnoster"` (This is my preferred theme)
-
-7. Download and install fonts for Powerline. [Download here.](https://github.com/powerline/fonts/)
-8. Right-click the title bar, select `Options`, then select your installed font from the `Text` section.
+Download and install fonts for Powerline. [Download here.](https://github.com/powerline/fonts/)
 
 ***
 
