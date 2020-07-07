@@ -152,7 +152,7 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
    For `bash` and `zsh`:
    `export DISPLAY=192.168.1.100:0`
-   
+
    For `fish`:
    `set -x DISPLAY 192.168.1.100:0`
 
@@ -166,4 +166,4 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
    `xcalc`
 
-7. If Xming is working properly, Xorg Calculator should popup as a new window.
+7. If `VcXsrv` is working properly, Xorg Calculator should popup as a new window.
