@@ -94,6 +94,20 @@ For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 ***
 
+### Install and Configure Windows Terminal
+
+1. From the Windows Store, install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab).
+
+2. Copy any `.png` or `.ico` that you would like to use as distro icons to the following folder:
+
+   `%LOCALAPPDATA%\packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\RoamingState\`
+
+3. Edit the `settings.json` file for `Windows Terminal` and add the following line to the list item:
+
+   `"icon" : "ms-appdata:///roaming/filename.ico",`
+
+***
+
 ### Install Yay AUR Helper and Pacman Wrapper (https://github.com/Jguer/yay)
 
 1. Create a directory for the yay PKGBUILD files and enter it.
@@ -136,16 +150,16 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
 4. Export output to display using IP address collected in step 3.
 
-   For `bash` and `zsh`
+   For `bash` and `zsh`:
    `export DISPLAY=192.168.1.100:0`
-   For `fish`
+   For `fish`:
    `set -x DISPLAY 192.168.1.100:0`
 
 5. Install an xorg app for testing (We will use the Xorg Calculator).
 
    `sudo pacman -S xorg-xcalc`
 
-   Note: If you add this line to your `.bashrc` or `.zshrc` you won't need to type it again on the next WSL launch. For `fish` use `set -x DISPLAY 
+   Note: Add to `.bashrc`, `.zshrc`, or `~/.config/fish/fish.config` and you won't need to type it again on the next WSL launch.
 
 6. Launch `xcalc` to test.
 
