@@ -152,6 +152,7 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
    For `bash` and `zsh`:
    `export DISPLAY=192.168.1.100:0`
+   
    For `fish`:
    `set -x DISPLAY 192.168.1.100:0`
 
