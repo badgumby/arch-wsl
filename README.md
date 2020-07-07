@@ -110,20 +110,22 @@ For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 ***
 
-### Install Yay AUR Helper and Pacman Wrapper (https://github.com/Jguer/yay)
+### Install [Yay AUR Helper and Pacman Wrapper](https://github.com/Jguer/yay)
 
 1. Create a directory for the yay PKGBUILD files and enter it.
 
    `mkdir ~/yay`
    `cd ~/yay`
 
-2. Download yay PKGBUILD from AUR.  
+2. Download yay PKGBUILD from AUR.
 
-   `wget --no-check-certificate https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay --output-document=./PKGBUILD`
+   `wget https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay --output-document=./PKGBUILD`
 
 3. Run `makepkg` to build and install yay.
 
    `makepkg -si`
+
+* Alternatively, you could use the instructions from the official [Yay Github repo](https://github.com/Jguer/yay))
 
 ***
 
