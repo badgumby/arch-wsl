@@ -119,19 +119,36 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
 ### Launch X11 apps from the shell to Windows display
 
-1. Download and install [Xming](http://www.straightrunning.com/XmingNotes/), and X11 display server for Windows.
-2. Install an xorg app for testing (We will use the Xorg Calculator).
+1. Download, install and then launch [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
+
+   + `Select display settings` - Take default
+   + `Select how to start clients` - Take default
+   + `Extra settings` - Be sure `Disable access control` is checked.
+   + `Configuration complete` - Click `Finish`
+
+2. Create a firewall rule in Windows to allow communication from WSL 2 to host OS.
+
+   `New-NetFirewallRule -DisplayName "X Server - WSL 2" -Direction Inbound -Program "C:\Program Files\VcXsrv\vcxsrv.exe" -Action Allow`
+
+3. Get the IP of your local computer of the `vEthernet (WSL)` interface from CMD or PowerShell:
+
+   `ipconfig`
+
+4. Export output to display using IP address collected in step 3.
+
+   For `bash` and `zsh`
+   `export DISPLAY=192.168.1.100:0`
+   For `fish`
+   `set -x DISPLAY 192.168.1.100:0`
+
+5. Install an xorg app for testing (We will use the Xorg Calculator).
 
    `sudo pacman -S xorg-xcalc`
 
-3. Export output to display.
+   Note: If you add this line to your `.bashrc` or `.zshrc` you won't need to type it again on the next WSL launch. For `fish` use `set -x DISPLAY 
 
-   `export DISPLAY=:0`
-
-   Note: If you add this line to your `.bashrc` or `.zshrc` you won't need to type it again on the next WSL launch.
-
-4. Launch `xcalc` to test.
+6. Launch `xcalc` to test.
 
    `xcalc`
 
-5. If Xming is working properly, Xorg Calculator should popup as a new window.
+7. If Xming is working properly, Xorg Calculator should popup as a new window.
