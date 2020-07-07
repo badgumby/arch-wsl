@@ -155,11 +155,11 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
    For `fish`:
    `set -x DISPLAY 192.168.1.100:0`
 
+   Note: Add to `~/.bashrc`, `~/.zshrc`, or `~/.config/fish/fish.config` and you won't need to type it again on the next WSL launch.
+
 5. Install an xorg app for testing (We will use the Xorg Calculator).
 
    `sudo pacman -S xorg-xcalc`
-
-   Note: Add to `.bashrc`, `.zshrc`, or `~/.config/fish/fish.config` and you won't need to type it again on the next WSL launch.
 
 6. Launch `xcalc` to test.
 
