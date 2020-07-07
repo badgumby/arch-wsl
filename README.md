@@ -6,11 +6,11 @@ For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 ### Installing Archlinux for WSL 2 from bootstrap
 
-1. Setup, upgrade to the `Windows Subsystem for Linux 2`. [Go here.](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
+1. Install/upgrade to the `Windows Subsystem for Linux 2`. [Go here.](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
 
-2. Install another distro from the `Windows Store`.
+* `Steps 2-8 should be completed on a linux system`
 
-      `You could also do these next few steps on a separate linux machine`
+2. Install your favorite available distro from the `Windows Store`.
 
 3. Get the Arch Linux bootstrap (latest version at time of writing).
 
@@ -35,6 +35,8 @@ For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 8. Move the `root.tar.gz` file to an accessible Windows directory.
 
       `sudo mv root.tar.gz /mnt/c/Users/USERNAME/root.tar.gz`
+
+* `You no longer need the temporarily installed linux system`
 
 9. Open a PowerShell prompt as Admin, and issue the following command:
 
