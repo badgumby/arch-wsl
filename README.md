@@ -8,9 +8,9 @@ For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 1. Install/upgrade to the `Windows Subsystem for Linux 2`. [Go here.](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
 
-* `Steps 2-8 should be completed on a linux system`
-
 2. Install your favorite available distro from the `Windows Store`, then launch it from the `Start` menu.
+
+* `Steps 3-8 should be completed on a linux system`
 
 3. Download the Arch Linux bootstrap (latest version at time of writing).
 
