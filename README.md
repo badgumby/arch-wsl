@@ -96,6 +96,61 @@ For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 ***
 
+### Configure the ArchLinux WSL install for systemd
+
+This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-microk8s/).
+
+1. Install `daemonize`.
+
+`yay -S daemonize`
+
+2. Create the `wsl.conf` file on the system.
+
+`vim /etc/wsl.conf`
+
+```
+vi /etc/wsl.conf
+[automount]
+enabled = true
+options = "metadata,uid=1000,gid=1000,umask=22,fmask=11,case=off"
+mountFsTab = true
+crossDistro = true
+
+[network]
+generateHosts = false
+generateResolvConf = true
+
+[interop]
+enabled = true
+appendWindowsPath = true
+
+[user]
+default = your_username
+```
+
+3. Create a startup script daemonize systemd as PID 1.
+
+`vim /etc/profile.d/00-wsl2-systemd.sh`
+
+```sh
+SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
+
+if [ -z "$SYSTEMD_PID" ]; then
+   sudo /usr/bin/daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+   SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
+fi
+
+if [ -n "$SYSTEMD_PID" ] && [ "$SYSTEMD_PID" != "1" ]; then
+    exec sudo /usr/bin/nsenter -t $SYSTEMD_PID -a su - $LOGNAME
+fi
+```
+
+4. Exit out of WSL, and re-enter. It should now be running systemd.
+
+(If you have any issues with the network, manually set a public DNS entry.)
+
+***
+
 ### Install and Configure Windows Terminal
 
 1. From the Windows Store, install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab).
