@@ -4,9 +4,18 @@ These are the basic instructions to build Arch on WSL 2.
 
 * For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
+### Table of Contents
+
+* [Installing Arch Linux for WSL2](#Installing-Arch-Linux-for-WSL-2-from-bootstrap)
+* [Install Yay AUR Helper and Pacman Wrapper](#Install-Yay-AUR-Helper-and-Pacman-Wrapper)
+* [Configure the Arch Linux WSL install for systemd](#Configure-the-Arch-Linux-WSL-install-for-systemd)
+* [Install and Configure Windows Terminal](#Install-and-Configure-Windows-Terminal)
+* [Powerline Fonts](#Powerline-Fonts)
+* [Launch X11 apps from the shell to Windows display](#Launch-X11-apps-from-the-shell-to-Windows-display)
+
 ***
 
-### Installing Archlinux for WSL 2 from bootstrap
+### Installing Arch Linux for WSL 2 from bootstrap
 
 1. Install/upgrade to the `Windows Subsystem for Linux 2`. [Go here.](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
 
@@ -102,6 +111,25 @@ These are the basic instructions to build Arch on WSL 2.
 
 ***
 
+### Install Yay AUR Helper and Pacman Wrapper
+
+1. Create a directory for the yay PKGBUILD files and enter it.
+
+   `mkdir ~/yay`
+   `cd ~/yay`
+
+2. Download yay PKGBUILD from AUR.
+
+   `wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" --output-document=./PKGBUILD`
+
+3. Run `makepkg` to build and install yay.
+
+   `makepkg -si`
+
+* Alternatively, you could use the instructions from the official [Yay Github repo](https://github.com/Jguer/yay))
+
+***
+
 ### Configure the ArchLinux WSL install for systemd
 
 This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-microk8s/).
@@ -167,25 +195,6 @@ This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-m
 3. Edit the `settings.json` file for `Windows Terminal` and add the following line to the list item:
 
    `"icon" : "ms-appdata:///roaming/filename.ico",`
-
-***
-
-### Install [Yay AUR Helper and Pacman Wrapper](https://github.com/Jguer/yay)
-
-1. Create a directory for the yay PKGBUILD files and enter it.
-
-   `mkdir ~/yay`
-   `cd ~/yay`
-
-2. Download yay PKGBUILD from AUR.
-
-   `wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" --output-document=./PKGBUILD`
-
-3. Run `makepkg` to build and install yay.
-
-   `makepkg -si`
-
-* Alternatively, you could use the instructions from the official [Yay Github repo](https://github.com/Jguer/yay))
 
 ***
 
