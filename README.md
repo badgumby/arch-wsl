@@ -152,7 +152,7 @@ This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-m
 
 4. Exit out of WSL, and re-enter. It should now be running systemd.
 
-(If you have any issues with the network, manually set a public DNS entry.)
+    * If you have any issues with the network, manually set a public DNS entry.
 
 ***
 
