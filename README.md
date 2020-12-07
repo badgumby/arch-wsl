@@ -179,7 +179,7 @@ This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-m
 
 2. Download yay PKGBUILD from AUR.
 
-   `wget https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay --output-document=./PKGBUILD`
+   `wget "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay" --output-document=./PKGBUILD`
 
 3. Run `makepkg` to build and install yay.
 
