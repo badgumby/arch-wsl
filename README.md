@@ -1,6 +1,8 @@
 # Arch on WSL 2
-#### These are the basic instructions to build Arch on WSL 2.
-For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
+
+These are the basic instructions to build Arch on WSL 2.
+
+* For instructions on bootstrapping WSL 1, please [go here.](../master/WSL_1)
 
 ***
 
@@ -198,10 +200,10 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
 1. Download, install and then launch [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
 
-   + `Select display settings` - Take default
-   + `Select how to start clients` - Take default
-   + `Extra settings` - Be sure `Disable access control` is checked.
-   + `Configuration complete` - Click `Finish`
+   * `Select display settings` - Take default
+   * `Select how to start clients` - Take default
+   * `Extra settings` - Be sure `Disable access control` is checked.
+   * `Configuration complete` - Click `Finish`
 
 2. Create a firewall rule in Windows to allow communication from WSL 2 to host OS.
 
