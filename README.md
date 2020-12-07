@@ -115,7 +115,6 @@ This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-m
     `vim /etc/wsl.conf`
 
     ```sh
-    vi /etc/wsl.conf
     [automount]
     enabled = true
     options = "metadata,uid=1000,gid=1000,umask=22,fmask=11,case=off"
