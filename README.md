@@ -130,7 +130,7 @@ These are the basic instructions to build Arch on WSL 2.
 
 ***
 
-### Configure the ArchLinux WSL install for systemd
+### Configure the Arch Linux WSL install for systemd
 
 This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-microk8s/).
 
