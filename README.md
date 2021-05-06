@@ -106,7 +106,7 @@ These are the basic instructions to build Arch on WSL 2.
     locale-gen
     echo LANG=en_US.UTF-8 >> /etc/locale.conf
     echo LANGUAGE=en_US.UTF-8 >> /etc/locale.conf
-    echo LC_ALL=en_US.UTF-8 >> /etc/locale.confS
+    echo LC_ALL=en_US.UTF-8 >> /etc/locale.conf
     ```
 
 ***
