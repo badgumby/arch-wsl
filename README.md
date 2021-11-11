@@ -217,17 +217,13 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
    `New-NetFirewallRule -DisplayName "X Server - WSL 2" -Direction Inbound -Program "C:\Program Files\VcXsrv\vcxsrv.exe" -Action Allow`
 
-3. Get the IP of your local computer of the `vEthernet (WSL)` interface from CMD or PowerShell:
-
-   `ipconfig`
-
-4. Export output to display using IP address collected in step 3.
+3. Update DISPLAY environment variable. The method provided by [X410](https://x410.dev/cookbook/wsl/using-x410-with-wsl2/#:~:text=Update%20DISPLAY%20environment%20variable) is used here.
 
    For `bash` and `zsh`:
-   `export DISPLAY=192.168.1.100:0`
+   `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0`
 
    For `fish`:
-   `set -x DISPLAY 192.168.1.100:0`
+   `set -x DISPLAY $(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0`
 
    Note: Add to `~/.bashrc`, `~/.zshrc`, or `~/.config/fish/fish.config` and you won't need to type it again on the next WSL launch.
 
