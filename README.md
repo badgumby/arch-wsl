@@ -64,7 +64,7 @@ These are the basic instructions to build Arch on WSL 2.
 
 12. Install base.
 
-    `pacman -Syyu base base-devel git vim wget reflector fish`
+    `pacman -Syyu base base-devel git vim wget reflector zsh`
 
 13. Enable `multilib` (if you want).
 
@@ -89,7 +89,7 @@ These are the basic instructions to build Arch on WSL 2.
 
 17. Create new user.
 
-    `useradd -m -G wheel -s /bin/fish -d /home/username username`
+    `useradd -m -G wheel -s /bin/bash username`
 
 18. Set password on user.
 
