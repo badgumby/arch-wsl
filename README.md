@@ -64,7 +64,7 @@ These are the basic instructions to build Arch on WSL 2.
 
 12. Install base.
 
-    `pacman -Syyu base base-devel git vim wget reflector fish`
+    `pacman -Syyu base base-devel git vim wget reflector zsh`
 
 13. Enable `multilib` (if you want).
 
@@ -89,7 +89,7 @@ These are the basic instructions to build Arch on WSL 2.
 
 17. Create new user.
 
-    `useradd -m -G wheel -s /bin/fish -d /home/username username`
+    `useradd -m -G wheel -s /bin/bash username`
 
 18. Set password on user.
 
@@ -169,8 +169,8 @@ This guid is based off the information found on [WSL.dev](https://wsl.dev/wsl2-m
     SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
 
     if [ -z "$SYSTEMD_PID" ]; then
-       sudo /usr/bin/daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/    systemd/systemd --system-unit=basic.target
-       SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.    target$' | grep -v unshare | awk '{print $2}')
+       sudo /usr/bin/daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+       SYSTEMD_PID=$(ps -ef | grep '/lib/systemd/systemd --system-unit=basic.target$' | grep -v unshare | awk '{print $2}')
     fi
 
     if [ -n "$SYSTEMD_PID" ] && [ "$SYSTEMD_PID" != "1" ]; then
@@ -217,17 +217,13 @@ Download and install fonts for Powerline. [Download here.](https://github.com/po
 
    `New-NetFirewallRule -DisplayName "X Server - WSL 2" -Direction Inbound -Program "C:\Program Files\VcXsrv\vcxsrv.exe" -Action Allow`
 
-3. Get the IP of your local computer of the `vEthernet (WSL)` interface from CMD or PowerShell:
-
-   `ipconfig`
-
-4. Export output to display using IP address collected in step 3.
+3. Update DISPLAY environment variable. The method provided by [X410](https://x410.dev/cookbook/wsl/using-x410-with-wsl2/#:~:text=Update%20DISPLAY%20environment%20variable) is used here.
 
    For `bash` and `zsh`:
-   `export DISPLAY=192.168.1.100:0`
+   `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0`
 
    For `fish`:
-   `set -x DISPLAY 192.168.1.100:0`
+   `set -x DISPLAY $(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0`
 
    Note: Add to `~/.bashrc`, `~/.zshrc`, or `~/.config/fish/fish.config` and you won't need to type it again on the next WSL launch.
 
